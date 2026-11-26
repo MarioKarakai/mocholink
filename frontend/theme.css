@@ -1,0 +1,220 @@
+/* MochoLink · tema "pergamino de inventario" */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap");
+
+:root {
+  --ml-sage: #D3E2CD;
+  --ml-sage-deep: #A9C1A0;
+  --ml-forest: #3A5A40;
+  --ml-parchment: #F5EBE0;
+  --ml-parchment-light: #FFFBF2;
+  --ml-gold: #C5A059;
+  --ml-gold-bright: #D4AF37;
+  --ml-gold-worn: #C6A664;
+  --ml-leather: #8B5E3C;
+  --ml-leather-dark: #6B4423;
+  --ml-ink: #3B2F22;
+  --ml-ink-soft: #54452F;
+  --ml-cream-text: #FFF6E0;
+  --ml-font-title: "Cinzel", "Trajan Pro", Georgia, serif;
+  --ml-font-body: "Lora", Georgia, "Times New Roman", serif;
+}
+
+/* ---------- Fondo: claro de bosque ---------- */
+.stApp {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(250, 248, 225, 0.45) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 115%, rgba(58, 90, 64, 0.40) 0%, transparent 60%),
+    linear-gradient(180deg, #CFDFC8 0%, #C2D6B9 50%, #ADC5A3 100%);
+  background-attachment: fixed;
+}
+[data-testid="stHeader"] { background: transparent; }
+
+html, body, .stApp, .stApp p, .stApp label, .stApp input, .stApp li {
+  font-family: var(--ml-font-body);
+  color: var(--ml-ink);
+}
+
+.stApp h1, .stApp h2, .stApp h3 {
+  font-family: var(--ml-font-title) !important;
+  color: var(--ml-leather-dark);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Cabecera ---------- */
+.ml-header { text-align: center; padding: 0.25rem 0 1.75rem; }
+.ml-crest { width: 64px; height: 64px; filter: drop-shadow(0 2px 3px rgba(59, 47, 34, 0.35)); }
+.stApp .ml-header .ml-title {
+  font-family: var(--ml-font-title);
+  font-weight: 700;
+  font-size: clamp(2.3rem, 7vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0.35rem 0 0.4rem;
+  color: var(--ml-gold) !important;
+  letter-spacing: 0.08em;
+  padding: 0 !important;
+  text-shadow:
+    0 1px 0 var(--ml-leather-dark),
+    0 2px 0 rgba(107, 68, 35, 0.55),
+    0 4px 14px rgba(58, 90, 64, 0.35);
+}
+.ml-tagline {
+  font-family: var(--ml-font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ml-forest) !important;
+  margin: 0;
+}
+.ml-flourish {
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  margin-top: 0.9rem; color: var(--ml-gold);
+}
+.ml-flourish::before, .ml-flourish::after {
+  content: ""; height: 1px; width: min(28%, 140px);
+  background: linear-gradient(90deg, transparent, var(--ml-leather));
+}
+.ml-flourish::after { transform: scaleX(-1); }
+
+/* ---------- Tarjetas de pergamino (formulario e historial) ---------- */
+[data-testid="stForm"],
+.stApp [class*="st-key-ml-card"] {
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(139, 94, 60, 0.10) 100%),
+    linear-gradient(180deg, #FBF3E4 0%, var(--ml-parchment) 55%, #EFE1CC 100%) !important;
+  border: 1px solid var(--ml-gold-worn) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 0 0 4px var(--ml-parchment),
+    0 0 0 5px rgba(198, 166, 100, 0.6),
+    0 14px 32px rgba(47, 74, 53, 0.28),
+    inset 0 0 0 1px rgba(255, 251, 242, 0.7) !important;
+}
+[data-testid="stForm"] { padding: 1.75rem 1.75rem 1.5rem !important; }
+.stApp [class*="st-key-ml-card"] {
+  margin: 0.35rem 0.3rem 0.9rem;
+  box-shadow:
+    0 0 0 3px var(--ml-parchment),
+    0 0 0 4px rgba(198, 166, 100, 0.55),
+    0 8px 20px rgba(47, 74, 53, 0.22) !important;
+}
+
+/* ---------- Etiquetas e inputs ---------- */
+[data-testid="stWidgetLabel"] p {
+  font-family: var(--ml-font-title) !important;
+  font-weight: 500;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.05em;
+  color: var(--ml-leather-dark) !important;
+}
+[data-testid="stTextInputRootElement"],
+[data-testid="stTextInputRootElement"] > div {
+  background: var(--ml-parchment-light) !important;
+}
+[data-testid="stTextInputRootElement"] {
+  border: 1px solid #B8996B !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 3px rgba(107, 68, 35, 0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+[data-testid="stTextInputRootElement"]:focus-within {
+  border-color: var(--ml-gold-bright) !important;
+  box-shadow: inset 0 1px 3px rgba(107, 68, 35, 0.12), 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+[data-testid="stTextInput"] input { color: var(--ml-ink) !important; font-size: 1rem; }
+[data-testid="stTextInput"] input::placeholder { color: #A8977C !important; font-style: italic; opacity: 1; }
+[data-testid="stTooltipIcon"] svg { color: var(--ml-leather) !important; stroke: var(--ml-leather) !important; }
+
+/* ---------- Botón de cuero con resplandor dorado ---------- */
+[data-testid="stFormSubmitButton"] button,
+.stApp button[kind="primary"],
+.stApp button[kind="primaryFormSubmit"] {
+  background: linear-gradient(180deg, #A47148 0%, var(--ml-leather) 55%, var(--ml-leather-dark) 100%) !important;
+  border: 1px solid var(--ml-leather-dark) !important;
+  border-radius: 10px !important;
+  color: var(--ml-cream-text) !important;
+  padding: 0.65rem 1rem !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 236, 200, 0.35),
+    inset 0 -2px 0 rgba(59, 35, 15, 0.25),
+    0 3px 8px rgba(59, 47, 34, 0.3) !important;
+  transition: box-shadow 0.25s ease, filter 0.25s ease, transform 0.1s ease;
+}
+[data-testid="stFormSubmitButton"] button p,
+.stApp button[kind="primary"] p,
+.stApp button[kind="primaryFormSubmit"] p {
+  font-family: var(--ml-font-title) !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--ml-cream-text) !important;
+}
+[data-testid="stFormSubmitButton"] button:hover,
+[data-testid="stFormSubmitButton"] button:focus-visible,
+.stApp button[kind="primary"]:hover,
+.stApp button[kind="primaryFormSubmit"]:hover {
+  filter: brightness(1.1);
+  border-color: var(--ml-gold-bright) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 236, 200, 0.45),
+    0 0 0 1px var(--ml-gold-bright),
+    0 0 18px 4px rgba(212, 175, 55, 0.55) !important;
+}
+[data-testid="stFormSubmitButton"] button:active { transform: translateY(1px); }
+
+/* ---------- Mensajes ---------- */
+[data-testid="stAlertContainer"] {
+  border-radius: 10px !important;
+  border: 1px solid var(--ml-gold-worn);
+  background: rgba(255, 251, 242, 0.85) !important;
+  color: var(--ml-ink) !important;
+}
+[data-testid="stAlertContainer"] p { color: var(--ml-ink) !important; }
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentSuccess"]) {
+  background: linear-gradient(90deg, #E4EEDC, #F3EEDB) !important;
+  border-color: #7E9A6E;
+  border-left: 5px solid var(--ml-forest);
+}
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentSuccess"]) p {
+  color: #2F4A35 !important; font-weight: 600;
+}
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentError"]) {
+  background: #F6E3D6 !important; border-color: #B5714A; border-left: 5px solid #9A3B24;
+}
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentWarning"]) {
+  background: #F8EDCF !important; border-color: var(--ml-gold-worn); border-left: 5px solid #B8860B;
+}
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"]) {
+  background: rgba(245, 235, 224, 0.9) !important; border-left: 5px solid var(--ml-gold);
+}
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"]) p { font-style: italic; }
+
+/* ---------- Enlace generado ---------- */
+[data-testid="stCode"] pre,
+[data-testid="stCode"] > div {
+  background: var(--ml-parchment-light) !important;
+  border: 1px dashed var(--ml-gold-worn) !important;
+  border-radius: 10px !important;
+}
+[data-testid="stCode"] code {
+  color: var(--ml-leather-dark) !important;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+[data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {
+  color: var(--ml-ink-soft) !important;
+  font-style: italic;
+}
+
+/* ---------- Historial ---------- */
+.stApp hr {
+  border: none !important;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ml-leather) 20%, var(--ml-gold) 50%, var(--ml-leather) 80%, transparent);
+  opacity: 0.8;
+}
+.stApp a { color: var(--ml-leather-dark) !important; text-decoration-color: var(--ml-gold); }
+.stApp a:hover { color: #9C6B1E !important; text-shadow: 0 0 8px rgba(212, 175, 55, 0.45); }
+[data-testid="stText"], [data-testid="stText"] div {
+  font-family: var(--ml-font-body) !important;
+  color: var(--ml-ink-soft) !important;
+  word-break: break-all;
+}
